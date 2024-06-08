@@ -21,8 +21,8 @@ const resolvedImageWithDomain = new URL(
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  ? title + " | " + "Dune Group"
+  : "Dune Group - Cybersecurity consulting, research & development.";
 ---
 
 <!DOCTYPE html>
@@ -36,22 +36,17 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Dune Group Consulting is a cybersecurity consulting firm that provides cybersecurity services to small and medium-sized businesses. We help businesses secure their data and protect their customers from cyber threats."
       canonical={canonicalURL}
-      twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
-        card: "summary_large_image",
-      }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `Dune Group Consulting - Cybersecurity consulting, research & development.`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "Dune Group Homepage Screenshot",
         },
       }}
     />
