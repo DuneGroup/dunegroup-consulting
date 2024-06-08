@@ -2,16 +2,14 @@
 import Button from "./ui/button.astro";
 ---
 
-<!-- To make this contact form work, create your free access key from https://web3forms.com/
-     Then you will get all form submissions in your email inbox. -->
 <form
-  action="https://api.web3forms.com/submit"
+  action="https://formspree.io/f/xpzvgbdj"
   method="POST"
   id="form"
   class="needs-validation"
   novalidate>
-  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-  <!-- Create your free access key from https://web3forms.com/ -->
+  <input type="hidden" name="_next" value="http://yourwebsite.com/thankyou" />
+  <!-- Create your free access key from https://formspree.io/ -->
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
   <div class="mb-5">
     <input
@@ -26,11 +24,12 @@ import Button from "./ui/button.astro";
     </div>
   </div>
   <div class="mb-5">
-    <label for="email_address" class="sr-only">Email Address</label><input
+    <label for="email_address" class="sr-only">Email Address</label>
+    <input
       id="email_address"
       type="email"
       placeholder="Email Address"
-      name="email"
+      name="_replyto"
       required
       class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
     />
@@ -93,7 +92,7 @@ import Button from "./ui/button.astro";
 
     result.innerHTML = "Sending...";
 
-    fetch("https://api.web3forms.com/submit", {
+    fetch("https://formspree.io/f/xpzvgbdj", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -102,21 +101,21 @@ import Button from "./ui/button.astro";
       body: json,
     })
       .then(async (response) => {
-        let json = await response.json();
-        if (response.status == 200) {
+        if (response.ok) {
           result.classList.add("text-green-500");
-          result.innerHTML = json.message;
+          result.innerHTML = "Your message has been sent successfully!";
         } else {
-          console.log(response);
+          let json = await response.json();
           result.classList.add("text-red-500");
-          result.innerHTML = json.message;
+          result.innerHTML = json.message || "Something went wrong!";
         }
       })
       .catch((error) => {
         console.log(error);
+        result.classList.add("text-red-500");
         result.innerHTML = "Something went wrong!";
       })
-      .then(function () {
+      .finally(() => {
         form.reset();
         form.classList.remove("was-validated");
         setTimeout(() => {
