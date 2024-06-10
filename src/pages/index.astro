@@ -16,21 +16,63 @@ import { Picture } from "astro:assets";
 
 import Sectionhead from "@components/sectionhead.astro";
 
+// Hero text appears in the top section of the landing page next to the logo
+const heroText = `We are seasoned experts in cybersecurity, R&D, and software engineering. 
+    We are dedicated to delivering tailored security solutions that ensure the 
+    integrity, confidentiality, and availability of your critical systems and data.`
+    
+// Content displayed in the "Our Team" section
 const publishedTeamMembers = await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 
+// Content displayed in the "Our Services" section
+const services = [
+  {
+    title: "Security Engineering",
+    description: 
+      `Empower your security initiatives with bespoke tools,
+       advanced vulnerability remediation and penetration testing. 
+       We safeguard your software at every stage—development, testing, 
+       and deployment—ensuring robust protection for your critical systems.`,
+    icon: "bx:bxs-customize",
+  },
+  {
+    title: "Research and Development",
+    description:
+      `Tackle complex security, vulnerability research and exploitable challenges. 
+      We deliver innovative solutions, from vulnerability discovery to custom exploit 
+      development, ensuring robust protection for your systems.`,
+    icon: "bx:bxs-lock-open",
+  },
+  {
+    title: "Training and Consulting",
+    description:
+      `Enhance your security posture and level up your teams with our
+       expert guidance. We offer comprehensive consulting on SEC & industry 
+       compliant risk management processes & procedures alongside tailored training
+       for security architecture, implementation, software security, 
+       threat modeling and more.`,
+    icon: "bx:bxs-book",
+  },
+  {
+    title: "Incident Response and Forensics",
+    description:
+      `Respond to incidents quickly and carry out time sensitive forensics during and 
+      after security breaches. We offer incident response, detailed forensic analysis, 
+      with actionable insights to drive quick recovery of your systems and bolster your 
+      defenses.`,
+    icon: "bx:bxs-search-alt-2",
+  },
+];
+
 ---
 
-<Layout title="">
+<Layout title="Dunegroup.xyz">
   
   <Container title="hero">
     <Hero 
-    text={`
-    We are seasoned experts in cybersecurity, R&D, and software engineering. 
-    We are dedicated to delivering tailored security solutions that ensure the 
-    integrity, confidentiality, and availability of your critical systems and data.
-    `}
+    text={heroText}
     image={heroImage}
     alt={`
     Line art depiction of a desert planet, perhaps Arrakis, covered with sand dunes.
@@ -82,7 +124,9 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
       <Fragment slot="title">Our Services</Fragment>
       <Fragment slot="desc">At your disposal</Fragment>
     </Sectionhead>
-    <Features />
+    <Features
+      data={services}
+    />
   </Container>
 
   <section id="contact"></section>
