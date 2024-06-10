@@ -1,4 +1,5 @@
 # Dune Group Consulting astro+astrowind site
+Modifications to original theme source code consist of content and slight styling tweaks.
 
 ## Installation
 
