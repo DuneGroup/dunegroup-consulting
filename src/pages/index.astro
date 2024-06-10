@@ -17,8 +17,7 @@ import Sectionhead from "@components/sectionhead.astro";
 
 // Hero text appears in the top section of the landing page next to the logo
 const heroText = `We are seasoned experts in cybersecurity, R&D, and software engineering. 
-    We are dedicated to delivering tailored security solutions that ensure the 
-    integrity, confidentiality, and availability of your critical systems and data.`
+  Our team is committed to providing tailored security solutions that protect critical systems and data from evolving threats.`
     
 // Content displayed in the "Our Team" section
 const publishedTeamMembers = await getCollection("team", ({ data }) => {
@@ -30,18 +29,14 @@ const services = [
   {
     title: "Security Engineering",
     description: 
-      `Empower your security initiatives with bespoke tools,
-       advanced vulnerability remediation and penetration testing. 
-       We safeguard your software at every stage—development, testing, 
-       and deployment—ensuring robust protection for your critical systems.`,
+      `Empower your security initiatives with customized tools, advanced vulnerability remediation, comprehensive code audits, and penetration testing. We protect your software throughout development, testing, and deployment, ensuring robust security for your critical systems.`,
     icon: "bx:bxs-customize",
   },
   {
     title: "Research and Development",
     description:
-      `Tackle complex security, vulnerability research and exploitable challenges. 
-      We deliver innovative solutions, from vulnerability discovery to custom exploit 
-      development, ensuring robust protection for your systems.`,
+      `Address complex security challenges with advanced vulnerability research and exploit development. 
+      We deliver innovative solutions, from identifying vulnerabilities to developing custom exploits, ensuring robust protection for your systems.`,
     icon: "bx:bxs-lock-open",
   },
   {
@@ -57,10 +52,7 @@ const services = [
   {
     title: "Incident Response and Forensics",
     description:
-      `Respond to incidents quickly and carry out time sensitive forensics during and 
-      after security breaches. We offer incident response, detailed forensic analysis, 
-      with actionable insights to drive quick recovery of your systems and bolster your 
-      defenses.`,
+      `Enhance your security posture with our expertise in threat intelligence and forensics. Our team conducts detailed forensic analyses and delivers actionable insights to help you understand and mitigate threats, ensuring your systems are resilient against future attacks.`,
     icon: "bx:bxs-search-alt-2",
   },
 ];
