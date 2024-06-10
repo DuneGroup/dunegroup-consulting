@@ -5,7 +5,6 @@ import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import { Astronav, MenuItems, MenuIcon, StickyHeader } from "astro-navbar";
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 
 const menuitems = [
   {
@@ -19,17 +18,17 @@ const menuitems = [
 ];
 ---
 <StickyHeader
-  class="sticky top-0 z-50"
-  scrollY={10}
+  class="sticky top-0 z-0"
+  scrollY={20}
   defaultClass="bg-white"
-  activeClass="bg-white shadow-md"
+  activeClass="bg-white"
 >
 <Container>
   <header class="flex flex-col lg:flex-row justify-between items-center my-5">
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/">
-          <img
+          <Image
             src="/hero.png"
             width="60"
             height="60"
@@ -39,8 +38,8 @@ const menuitems = [
           />
         </a>&nbsp;
         <a href="/" class="text-lg"
-          ><span class="font-bold text-slate-800">Dune </span><span
-            class="text-slate-500">Group</span
+          ><span class="font-bold text-black">Dune
+            Group</span
           >
         </a>
         <div class="block lg:hidden">
@@ -56,7 +55,8 @@ const menuitems = [
                   
                     <Link
                       href={item.path}
-                      class="flex lg:px-3 py-2 items-center text-gray-600">
+                      class="flex lg:px-3 py-2 items-center text-black"
+                      style="inverted">
                       <span> {item.title}</span>
                       </Link>
                     
@@ -66,14 +66,13 @@ const menuitems = [
           }
         </ul>
         <div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="#contact" size="md">Contact us</Link>
+          <Link href="#contact" size="md" style="inverted">Contact us</Link>
         </div>
       </MenuItems>
     </Astronav>
     <div>
       <div class="hidden lg:flex items-center gap-4">
-        
-        <Link href="#contact" size="md">Contact us</Link>
+        <Link href="#contact" size="md" style="inverted">Contact us</Link>
       </div>
     </div>
   </header>
