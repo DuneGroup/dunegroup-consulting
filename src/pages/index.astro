@@ -3,7 +3,10 @@ import Contactform from "@components/contactform.astro";
 import Container from "@components/container.astro";
 
 import Features from "@components/features.astro";
+
 import Hero from "@components/hero.astro";
+import heroImage from "assets/hero.png";
+
 import Logos from "@components/logos.astro";
 import Layout from "@layouts/Layout.astro";
 
@@ -22,14 +25,25 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
 <Layout title="">
   
   <Container title="hero">
-    <Hero />
+    <Hero 
+    text={`
+    We are seasoned experts in cybersecurity, R&D, and software engineering. 
+    We are dedicated to delivering tailored security solutions that ensure the 
+    integrity, confidentiality, and availability of your critical systems and data.
+    `}
+    image={heroImage}
+    alt={`
+    Line art depiction of a desert planet, perhaps Arrakis, covered with sand dunes.
+     Twin suns are visible setting in the distance beyond the dunes.
+    `}
+     />
   </Container>
   
   <section id="team"></section>
   <Container title="team">
     <Sectionhead>
-      <Fragment slot="title">Our team</Fragment>
-      <Fragment slot="desc"><b>Proven</b> security practitioners, with <b>deep</b> engineering <b>expertise</b>.</Fragment>      
+      <Fragment slot="title">Our Team</Fragment>
+      <Fragment slot="desc"><b>Proven</b> security practitioners, with <b>deep</b> engineering <b>expertise</b></Fragment>      
     </Sectionhead>
 
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
@@ -61,11 +75,12 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
     </div>
   </Container>
 
+
   <section id="services"></section>
   <Container title="services">
     <Sectionhead>
-      <Fragment slot="title">Our services</Fragment>
-      <Fragment slot="desc">At your disposal.</Fragment>
+      <Fragment slot="title">Our Services</Fragment>
+      <Fragment slot="desc">At your disposal</Fragment>
     </Sectionhead>
     <Features />
   </Container>
@@ -73,8 +88,8 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
   <section id="contact"></section>
   <Container title="contact">
     <Sectionhead>
-      <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
+      <Fragment slot="title">Contact Us</Fragment>
+      <Fragment slot="desc">We are here to help</Fragment>
     </Sectionhead>
 
     <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
