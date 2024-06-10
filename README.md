@@ -1,6 +1,9 @@
 # Dune Group Consulting astro+astrowind site
 Modifications to original theme source code consist of content and slight styling tweaks.
 
+* Landing page content like logos, copy text & features are defined in `src/pages/index.astro`, with the exception of team members which are defined in `src/content/team/*.md`
+* Blog content resides in the `content/` folder
+
 ## Installation
 
 ### 1. Clone the repo

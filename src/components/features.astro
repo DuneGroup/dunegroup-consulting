@@ -2,37 +2,12 @@
 // @ts-ignore
 import { Icon } from "astro-icon/components";
 
-const features = [
-  {
-    title: "Security Engineering",
-    description:
-      "Our Security Engineering team supports your security projects by building custom tools and remediating system vulnerabilities. We keep your software secure throughout development, testing, and continuous deployment.",
-    icon: "bx:bxs-briefcase",
-  },
-  {
-    title: "Research and Development",
-    description:
-      "Our R&D team excels in identifying and addressing complex security challenges. We provide innovative solutions tailored to your needs, from vulnerability discovery to custom tool development, ensuring robust protection for your systems.",
-    icon: "bx:bxs-window-alt",
-  },
-  {
-    title: "Security Consulting and Training",
-    description:
-      "Leverage our extensive experience to enhance your security architecture, implementation strategies, and threat modeling processes. We offer expert guidance and training to fortify your defenses.",
-    icon: "bx:bxs-data",
-  },
-  {
-    title: "Incident Response and Forensics",
-    description:
-      "Our Incident Response and Forensics team is ready to assist you in the event of a security breach. We provide rapid response to incidents, detailed forensics analysis to uncover the root cause, and actionable insights to help you recover quickly and strengthen your defenses.",
-    icon: "bx:bxs-bot",
-  },
-];
+const { data } = Astro.props;
 ---
 
 <div class="grid sm:grid-cols-2 md:grid-cols-2 mt-16 gap-16">
   {
-    features.map((item) => (
+    data && data.map((item) => (
       <div class="flex gap-4 items-start">
         <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
           <Icon class="text-white" name={item.icon} />

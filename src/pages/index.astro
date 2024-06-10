@@ -3,8 +3,10 @@ import Contactform from "@components/contactform.astro";
 import Container from "@components/container.astro";
 
 import Features from "@components/features.astro";
+
 import Hero from "@components/hero.astro";
-import Logos from "@components/logos.astro";
+import heroImage from "assets/hero.png";
+
 import Layout from "@layouts/Layout.astro";
 
 import { Icon } from "astro-icon/components";
@@ -13,23 +15,68 @@ import { Picture } from "astro:assets";
 
 import Sectionhead from "@components/sectionhead.astro";
 
+// Hero text appears in the top section of the landing page next to the logo
+const heroText = `We are seasoned experts in cybersecurity, R&D, and software engineering. 
+  Our team is committed to providing tailored security solutions that protect critical systems and data from evolving threats.`
+    
+// Content displayed in the "Our Team" section
 const publishedTeamMembers = await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 
+// Content displayed in the "Our Services" section
+const services = [
+  {
+    title: "Security Engineering",
+    description: 
+      `Empower your security initiatives with customized tools, advanced vulnerability remediation, comprehensive code audits, and penetration testing. We protect your software throughout development, testing, and deployment, ensuring robust security for your critical systems.`,
+    icon: "bx:bxs-customize",
+  },
+  {
+    title: "Research and Development",
+    description:
+      `Address complex security challenges with advanced vulnerability research and exploit development. 
+      We deliver innovative solutions, from identifying vulnerabilities to developing custom exploits, ensuring robust protection for your systems.`,
+    icon: "bx:bxs-lock-open",
+  },
+  {
+    title: "Training and Consulting",
+    description:
+      `Enhance your security posture and level up your teams with our
+       expert guidance. We offer comprehensive consulting on SEC & industry 
+       compliant risk management processes & procedures alongside tailored training
+       for security architecture, implementation, software security, 
+       threat modeling and more.`,
+    icon: "bx:bxs-book",
+  },
+  {
+    title: "Incident Response and Forensics",
+    description:
+      `Enhance your security posture with our expertise in threat intelligence and forensics. Our team conducts detailed forensic analyses and delivers actionable insights to help you understand and mitigate threats, ensuring your systems are resilient against future attacks.`,
+    icon: "bx:bxs-search-alt-2",
+  },
+];
+
 ---
 
-<Layout title="">
+<Layout title="Dunegroup.xyz">
   
   <Container title="hero">
-    <Hero />
+    <Hero 
+    text={heroText}
+    image={heroImage}
+    alt={`
+    Line art depiction of a desert planet, perhaps Arrakis, covered with sand dunes.
+     Twin suns are visible setting in the distance beyond the dunes.
+    `}
+     />
   </Container>
   
   <section id="team"></section>
   <Container title="team">
     <Sectionhead>
-      <Fragment slot="title">Our team</Fragment>
-      <Fragment slot="desc"><b>Proven</b> security practitioners, with <b>deep</b> engineering <b>expertise</b>.</Fragment>      
+      <Fragment slot="title">Our Team</Fragment>
+      <Fragment slot="desc"><b>Proven</b> security practitioners, with <b>deep</b> engineering <b>expertise</b></Fragment>      
     </Sectionhead>
 
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
@@ -61,20 +108,23 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
     </div>
   </Container>
 
+
   <section id="services"></section>
   <Container title="services">
     <Sectionhead>
-      <Fragment slot="title">Our services</Fragment>
-      <Fragment slot="desc">At your disposal.</Fragment>
+      <Fragment slot="title">Our Services</Fragment>
+      <Fragment slot="desc">At your disposal</Fragment>
     </Sectionhead>
-    <Features />
+    <Features
+      data={services}
+    />
   </Container>
 
   <section id="contact"></section>
   <Container title="contact">
     <Sectionhead>
-      <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
+      <Fragment slot="title">Contact Us</Fragment>
+      <Fragment slot="desc">We are here to help</Fragment>
     </Sectionhead>
 
     <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">

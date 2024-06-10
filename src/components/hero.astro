@@ -1,16 +1,19 @@
 ---
 import { Picture } from "astro:assets";
-import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon/components";
+
+const { text,  image, alt } = Astro.props;
 ---
+
+
 
 <main
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div class="py-6 md:order-1 hidden md:block">
     <Picture
-      src={heroImage}
-      alt="Planet Arrakis with Dunes"
+      src={image}
+      alt={alt}
       widths={[200, 400, 600]}
       sizes="(max-width: 800px) 100vw, 620px"
       loading="eager"
@@ -23,7 +26,7 @@ import { Icon } from "astro-icon/components";
        <span class="text-slate-500">Dune Group</span> Consulting
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      We bring together a team of seasoned professionals with decades of combined experience in cybersecurity, research and development, and security consulting. Our mission is to provide top-notch security solutions, tailored to meet the unique needs of each client, ensuring the integrity, confidentiality, and availability of their critical systems and data.
+      { text }
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
